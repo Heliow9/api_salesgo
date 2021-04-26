@@ -1,4 +1,7 @@
+import crypto from "crypto"
 import User from '../models/userModel.js'
+
+
 
 class UserController {
   async query(req, res) {
@@ -10,8 +13,11 @@ class UserController {
   }
 
   async create(req, res) {
-    const { user } = req.body;
-    const newUser = new User({ user })
+
+    
+    const { user, password, email } = req.body;
+
+    const newUser = new User({ user,password,email });
     newUser.save()
       .then((result) => res.json({ result }))
       .catch((err) => res.json({ err }))
