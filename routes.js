@@ -21,7 +21,7 @@ router.post('/item/add', multer({ dest: 'public/uploads' }).single('file'), item
 router.get('/item', itemController.query);
 router.post('/tables/add', tableController.create);
 router.get('/tables', tableController.query);
-router.post('/order/add', orderController.create);
+router.put('/tables/setorder', tableController.update);
 
 
 export { router }

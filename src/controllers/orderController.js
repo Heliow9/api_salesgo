@@ -1,5 +1,6 @@
 import Order from '../models/orderModel.js';
 import Item from '../models/itemModel.js';
+import Table from '../models/tableModel.js';
 class OrderController {
   async create(req, res) {
     const { uid, table } = req.headers;
@@ -12,12 +13,17 @@ class OrderController {
     if (data) {
 
       const newOrder = new Order({ itemName: data.itemName, itemPrice: data.itemPrice, table: table })
-      newOrder.save().then((order) => {
-        res.json(order)
-      })      
-
+      Table.save().then(newOrder)
     }
 
+
+  }
+
+  async query(req, res) {
+
+    Order.find({ table }).then((order) => {
+      res.json(order)
+    })
 
   }
 

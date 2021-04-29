@@ -13,11 +13,8 @@ const tableSchema = new Schema({
     ref: 'User',
     required: true
   },
-  consumption: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Order',
-    required: true
-  }],
+  consumption: [  
+  ],
 
 }, {
   timestamps: true,

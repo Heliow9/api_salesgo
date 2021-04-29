@@ -14,6 +14,7 @@ app.use(router);
 mongoose.connect('mongodb+srv://heliow9:22021419h@cluster0.rea79.mongodb.net/salesgo?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 })
 
 if (!db) {

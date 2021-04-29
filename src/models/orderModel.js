@@ -13,11 +13,7 @@ const orderSchema = new Schema({
   },
 
 
-  table: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Table',
-    required: true
-  },
+  
   date: {
     type: Date,
     default: new Date().toLocaleDateString('pt-br',),
