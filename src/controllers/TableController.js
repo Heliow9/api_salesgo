@@ -44,17 +44,31 @@ class TableController {
 
   }
 
+  async queryAll(req, res) {
+    const { uid } = req.headers;
+    console.log(uid)
+    Table.find({ user: uid, consumption: { '$not': { '$size': 0 } } }).then((item) => {
+      res.json({ item })
+    }).catch((err) => {
+      res.json({ err })
+    })
+
+  }
+
+
+
   async update(req, res) {
     const { uid, table } = req.headers;
-    const selectecItem = '60870004a6e33a4d24a28e6b';
+    const selectecItem = '608afc44df440c304c6831bf';
     const result = await Item.find({ _id: selectecItem, user: uid });
     let data = [];
     result.map((item, key) => {
       data = ({ itemName: item.itemName, itemPrice: item.itemPrice, ref: selectecItem })
     })
     if (data) {
+      console.log(table)
       const createdDate = new Date();
-      Table.findOneAndUpdate(table, {
+      Table.findOneAndUpdate({ _id: table }, {
         $push: {
           consumption: { itemName: data.itemName, itemPrice: data.itemPrice, createdDate }
         }

@@ -20,6 +20,7 @@ router.post('/user/add', userController.create);
 router.post('/item/add', multer({ dest: 'public/uploads' }).single('file'), itemController.create);
 router.get('/item', itemController.query);
 router.post('/tables/add', tableController.create);
+router.get('/tables/consumption', tableController.queryAll);
 router.get('/tables', tableController.query);
 router.put('/tables/setorder', tableController.update);
 
